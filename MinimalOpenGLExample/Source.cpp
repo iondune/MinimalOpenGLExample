@@ -46,6 +46,7 @@ int main()
 		return -1;
 	}
 
+
 	//////////
 	// Data //
 	//////////
@@ -76,7 +77,7 @@ int main()
 	};
 
 	// Index data
-	GLuint const Elements[] = {
+	GLuint const Indices[] = {
 		0, 1, 2
 	};
 
@@ -85,23 +86,23 @@ int main()
 	// OpenGL Objects //
 	////////////////////
 
-	// Create VAO
+	// Create Vertex Array Object
 	GLuint VAO;
 	glGenVertexArrays(1, & VAO);
 	glBindVertexArray(VAO);
 
-	// Create VBO
+	// Create Vertex Buffer Object
 	GLuint VBO;
 	glGenBuffers(1, & VBO);
 	glBindBuffer(GL_ARRAY_BUFFER, VBO);
 	glBufferData(GL_ARRAY_BUFFER, sizeof(Vertices), Vertices, GL_STATIC_DRAW);
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
 
-	// Create EBO (sometimes called IBO)
-	GLuint EBO;
-	glGenBuffers(1, & EBO);
-	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
-	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(Elements), Elements, GL_STATIC_DRAW);
+	// Create Index Buffer Object
+	GLuint IBO;
+	glGenBuffers(1, & IBO);
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, IBO);
+	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(Indices), Indices, GL_STATIC_DRAW);
 
 
 	/////////////////////
@@ -170,7 +171,7 @@ int main()
 	glDeleteShader(FragmentShader);
 	glDeleteShader(VertexShader);
 
-	glDeleteBuffers(1, & EBO);
+	glDeleteBuffers(1, & IBO);
 	glDeleteBuffers(1, & VBO);
 	glDeleteVertexArrays(1, & VAO);
 
